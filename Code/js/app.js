@@ -6,28 +6,12 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-// Check if a URL is reachable
-async function checkService(url, dotId) {
-    const dot = document.getElementById(dotId);
-    if (!dot) return;
-    try {
-        const res = await fetch(url, { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' });
-        dot.className = 'status-dot up';
-    } catch {
-        dot.className = 'status-dot down';
-    }
+function setDot(id, status) {
+    const dot = document.getElementById(id);
+    if (dot) dot.className = 'status-dot ' + status;
 }
 
-function checkAllServices() {
-    checkService('http://100.101.233.78:8080', 'status-nextcloud');
-    checkService('http://100.101.233.78:8081', 'status-bitwarden');
-    checkService('http://100.101.233.78:3001', 'status-uptime');
-}
-
-checkAllServices();
-setInterval(checkAllServices, 30000);
-
-// Load stats from stats.json (written by server-side script)
+// Load stats and service status from stats.json (written by server-side script)
 async function loadStats() {
     try {
         const res = await fetch('data/stats.json?t=' + Date.now());
@@ -36,6 +20,12 @@ async function loadStats() {
         document.getElementById('stat-ram').textContent = data.ram ?? '—';
         document.getElementById('stat-disk').textContent = data.disk ?? '—';
         document.getElementById('stat-uptime').textContent = data.uptime ?? '—';
+
+        if (data.services) {
+            setDot('status-nextcloud', data.services.nextcloud ?? 'down');
+            setDot('status-bitwarden', data.services.bitwarden ?? 'down');
+            setDot('status-uptime', data.services['uptime-kuma'] ?? 'down');
+        }
     } catch {
         // stats not available — leave as dashes
     }
