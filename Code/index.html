@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q03 Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Q03</h1>
+        <span id="server-time"></span>
+    </header>
+
+    <section class="section-title">Services</section>
+    <section class="services" id="services">
+        <a class="service-card" href="http://100.101.233.78:8080" target="_blank">
+            <div class="service-top">
+                <span class="service-name">Nextcloud</span>
+                <span class="status-dot" id="status-nextcloud"></span>
+            </div>
+            <div class="service-desc">Files</div>
+        </a>
+        <a class="service-card" href="http://100.101.233.78:8081" target="_blank">
+            <div class="service-top">
+                <span class="service-name">Bitwarden</span>
+                <span class="status-dot" id="status-bitwarden"></span>
+            </div>
+            <div class="service-desc">Passwords</div>
+        </a>
+        <a class="service-card" href="http://100.101.233.78:3001" target="_blank">
+            <div class="service-top">
+                <span class="service-name">Uptime Kuma</span>
+                <span class="status-dot" id="status-uptime"></span>
+            </div>
+            <div class="service-desc">Monitoring</div>
+        </a>
+    </section>
+
+    <section class="section-title">Server Stats</section>
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-label">CPU</div>
+            <div class="stat-value" id="stat-cpu">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">RAM</div>
+            <div class="stat-value" id="stat-ram">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Disk</div>
+            <div class="stat-value" id="stat-disk">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Uptime</div>
+            <div class="stat-value" id="stat-uptime">—</div>
+        </div>
+    </section>
+
+    <section class="section-title">Apps</section>
+    <section class="apps" id="apps">
+        <div class="no-apps">No apps yet. Build one to see it here.</div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
