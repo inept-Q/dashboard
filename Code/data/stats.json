@@ -1,8 +1,8 @@
 {
-  "cpu": "4%",
-  "ram": "1756MB / 7325MB",
+  "cpu": "8%",
+  "ram": "1789MB / 7325MB",
   "disk": "14G / 457G (4%)",
-  "uptime": "20 hours, 33 minutes",
+  "uptime": "20 hours, 48 minutes",
   "services": {
     "nextcloud": "up",
     "bitwarden": "up",
